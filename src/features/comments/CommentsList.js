@@ -4,7 +4,7 @@ import { selectCommentsByCampsiteId } from "./commentsSlice";
 import CommentForm from "./CommentForm";
 import { useState } from "react";
 
-const CommentsList = ({campsiteId}) => {
+const CommentsList = ({ campsiteId }) => {
     const [comments , setComments] = useState(selectCommentsByCampsiteId(campsiteId));
     
     if (comments && comments.length > 0) {
