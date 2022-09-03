@@ -2,20 +2,21 @@ import {useState} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, FormGroup, Label } from 'reactstrap';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { validateCommentForm } from '../../utils/validateCommentForm';
-import { COMMENTS } from '../../app/shared/COMMENTS';
 
-const CommentForm = ({campsiteId}) => {
+const CommentForm = ({campsiteId , comments, setComments }) => {
     const [modalOpen,setModalOpen] = useState(false);
+
     const handleSubmit = (values) => {
         const comment = {
+            id: Date.now(),
             campsiteId: parseInt(campsiteId),
             rating: values.rating,
             author: values.author,
-            text: values.commentText
+            text: values.commentText,
+            date: new Date(Date.now()).toISOString()
         };
-        COMMENTS.push(comment);
+        setComments([...comments, comment]);
         console.log('Comment Values:', comment);
-        console.log('Comments Array:', COMMENTS);
         setModalOpen(false);
     }
 
