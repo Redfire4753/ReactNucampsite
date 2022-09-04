@@ -2,7 +2,6 @@ import {useState} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, FormGroup, Label } from 'reactstrap';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { validateCommentForm } from '../../utils/validateCommentForm';
-import { COMMENTS } from '../../app/shared/COMMENTS';
 
 const CommentForm = ({campsiteId}) => {
     const [modalOpen,setModalOpen] = useState(false);
@@ -13,9 +12,7 @@ const CommentForm = ({campsiteId}) => {
             author: values.author,
             text: values.commentText
         };
-        COMMENTS.push(comment);
         console.log('Comment Values:', comment);
-        console.log('Comments Array:', COMMENTS);
         setModalOpen(false);
     }
 
