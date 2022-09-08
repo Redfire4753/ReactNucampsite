@@ -3,6 +3,7 @@ import Comment from "./Comment";
 import { selectCommentsByCampsiteId } from "./commentsSlice";
 import CommentForm from "./CommentForm";
 import { useState } from "react";
+import { useSelector } from "react-redux/es/exports";
 
 const CommentsList = ({campsiteId}) => {
     const [comments , setComments] = useState(selectCommentsByCampsiteId(campsiteId));

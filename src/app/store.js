@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { campsitesReducer } from '../features/campsites/campsiteSlices';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    campsites: campsitesReducer,
   },
 });
