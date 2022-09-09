@@ -4,10 +4,11 @@ import { selectCampsiteById } from "../features/campsites/campsiteSlices";
 import CampsiteDetail from "../features/campsites/CampsiteDetail";
 import CommentsList from "../features/comments/CommentsList";
 import SubHeader from "../components/SubHeader";
+import { useSelector } from "react-redux/es/exports";
 
 const CampsiteDetailPage = () => {
     const { campsiteId } = useParams();
-    const campsite = selectCampsiteById(campsiteId);
+    const campsite = useSelector(selectCampsiteById(campsiteId));
 
     return ( 
         <Container>
