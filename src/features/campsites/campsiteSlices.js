@@ -1,5 +1,5 @@
 import { CAMPSITES } from '../../app/shared/CAMPSITES';
-import { createSlice } from 'react-redux';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     campsitesArray: CAMPSITES
@@ -24,6 +24,6 @@ export const selectCampsiteById = (id) => (state) => {
     return state.campsites.campsitesArray.find(campsite => campsite.id === parseInt(id));
 };
 
-export const selectFeaturedCampsite = () => {
+export const selectFeaturedCampsite = (state) => {
     return state.campsites.campsitesArray.find(campsite => campsite.featured);
 }
