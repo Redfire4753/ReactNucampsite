@@ -5,6 +5,8 @@ import { selectFeaturedCampsite } from '../campsites/campsiteSlices';
 import { selectFeaturedPromotion } from '../promotions/promotionSlice';
 import { selectFeaturedPartner } from '../partners/partnersSlice';
 import { useSelector } from 'react-redux';
+import Error from '../../components/Error';
+import Loading from '../../components/Loading';
 
 const DisplayList = () => {
     const items = useSelector(state => [
@@ -12,14 +14,23 @@ const DisplayList = () => {
             selectFeaturedPromotion(state),
             selectFeaturedPartner(state)
         ]);
+    
 
     return ( 
         <Row>
-            {items.map((item,idx) => {return(
-            item &&
-            <Col md className='m-1' key={idx}>
-                <AnimatedDisplayCard item={item} />
-            </Col> 
+            {items.map((item,idx) => {
+            const { featuredItem, isLoading, errMsg} = item;
+            if (isLoading) {
+                return <Loading key={idx} />;
+            }
+            if (errMsg) {
+                return <Error errMsg={errMsg} key={idx} />;
+            }
+            return(
+                featuredItem &&
+                <Col md className='m-1' key={idx}>
+                    <AnimatedDisplayCard item={featuredItem} />
+                </Col> 
             )})}
         </Row>
      );
